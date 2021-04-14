@@ -1,0 +1,19 @@
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
+
+contract ERC1155Basic is ERC1155 {
+    
+    uint256 public COUNTER;
+    
+
+    constructor() public ERC1155("https://lera.github.hosting/api/item/{id}.json") { //обращение по api
+        
+        COUNTER = 0;
+    }
+    
+    function create_erc1155_token('data[1], data[2]') public { //надо понять как  в метаданные json добавить  количество  erc20
+        //тут должно быть обращение к api для нашего id--COUNTER
+	_mint(msg.sender, COUNTER, 1, ""); 
+	COUNTER++;    
+    }
+    
+}
