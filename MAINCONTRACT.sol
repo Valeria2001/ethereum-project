@@ -120,16 +120,17 @@ contract MAINCONTRACT {   //контракт который обьединил  
 	require(number_erc721 == 1, "You need to send 1 erc721");
         token20.transferFrom(msg.sender, address(this), number_erc20); //функция приема erc20 
         token721.transferFrom(msg.sender, address(this), token721_id);//функция приема erc721
-        token1155_id = create_erc1155_token(number_erc20, token721_id); //функция чеканки  erc1155(в этой функции  реализовано запихивание в метадату)
+        token1155_id = create_erc1155_token(number_erc20, token721_id); //функция чеканки  erc1155
         token1155.safeTransferFrom(address(this), msg.sender, token1155_id, 1,"");  // Oтправляет ERC1155 заказчику
         //emit Bought(amountTobuy);
     }
+
 
     function get_aktiv(uint256 token1155_id) public {   //получение пользователем активов	
 	uint256 allowance = token1155.balanceOf(msg.sender, token1155_id);// проверка на количество токенов с определенным id у заказчика
         require(allowance > 0, "you havent token1155");       
         token1155.safeTransferFrom(msg.sender, address(this), token1155_id, 1,"");  // получает ERC1155 от заказчика
-        // тут должны быть функции извлечения number_erc20 и token721_id  из метадаты erc1155//
+         token1155._burn(address(this), token1155_id, 1);//удаление 
         token20.transferFrom(address(this),msg.sender, number_erc20);   // отправка заказчику_токенов erc20 
         token721.transferFrom(address(this), msg.sender, token721_id);//отправка  заказчику  erc721
         //emit Sold(amount);
