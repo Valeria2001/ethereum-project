@@ -4,8 +4,7 @@ contract TestIntToString {
 
     string public result;
 
-    function TestIntToString(uint aa, string bb) public returns (string str){
-        // result = uintToString(12345678901234567890);
+    function TestIntToString(uint aa, string bb) public returns(string){
         result = appendUintToString(bb, aa);
         return  result;
     }
