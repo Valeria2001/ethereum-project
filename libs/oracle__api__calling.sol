@@ -1,7 +1,7 @@
 pragma solidity ^0.4.4;
 import "https://github.com/provable-things/ethereum-api/blob/master/provableAPI_0.4.25.sol"; //подобрать актуальную  версию
 
-contract call_oracle__api {
+contract call_oracle__api is ProvableI {
 
     function request(string memory _query, string memory _method, string memory _url, string memory _kwargs) public payable {
       if (provable_getPrice(“computation”) > address(this).balance) {
