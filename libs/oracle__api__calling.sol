@@ -1,5 +1,5 @@
 pragma solidity ^0.4.4;
-import "https://github.com/provable-things/ethereum-api/blob/master/provableAPI_0.5.sol"; //подобрать актуальную  версию
+import "https://github.com/provable-things/ethereum-api/blob/master/provableAPI_0.4.25.sol"; //подобрать актуальную  версию
 
 contract call_oracle__api {
 
