@@ -5,9 +5,9 @@ contract TestIntToString {
 
     string public result;
 
-    function TestIntToString() {
-        // result = uintToString(12345678901234567890);
-        result = appendUintToString("My integer is: ", 1234567890);
+    function TestIntToString(uint aa, string bb) public returns(string){
+        result = appendUintToString(bb, aa);
+        return result;
     }
 
     function uintToString(uint v) constant returns (string str) {
