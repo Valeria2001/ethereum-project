@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
+import "https://github.com/provable-things/ethereum-api/blob/master/provableAPI_0.5.sol";
 
-import "github.com/oraclize/ethereum-api/provableAPI.sol";
 contract call_oracle__api {
 
     function request(string memory _query, string memory _method, string memory _url, string memory _kwargs) public payable {
