@@ -1,3 +1,4 @@
+
 from flask import Flask, abort
 from flask import jsonify
 import os
@@ -24,31 +25,33 @@ bucket = storage_client.get_bucket(bucket_name)
 # Routes
 ########################################################################
 
-@app.route('/api/creature/<token_id>') 
+
+
+@app.route('/api/<token_id>') 
 def  create(token_id):
 
+    token_id = 'http://leras.hostings/api/' + string(token_id) + '.json'  ##zdes bydet addr faila
 
 
-    token_id = string(token_id)+'.json'
-    number_of_erc20 = contract_instance.functions.my_contract_number_erc20().call()
+    number_of_erc20 = contract_instance.functions.my_contract_number_erc20().call()  #тут  мы вызываем переменные из смарт контракта
     tokenid_erc721 = contract_instance.functions.my_contract_token721_id().call()
     
-    if os.path.exists(token_id): #потом  добавить функционал в ск
+    if os.path.exists(token_id): #потом  добавить функционал в ск(по удалению  токенов)
      os.remove(token_id)
    
     else:
      json_data = {
-  	    "description": "info of users tokens",
-      	"number of erc20":  number_of_erc20, 
-  	    "info of  erc721": tokenid_erc721,
+  	"description": "info of users tokens", # -- мы записываем считаное в данные сайта
+  	"number of erc20":  number_of_erc20, 
+  	"info of  erc721": tokenid_erc721,
      }
-     blob = bucket.blob(token_id)
-     blob.upload_from_string(
+     blob = bucket.blob(token_id) #обращение  к бд google storage
+     blob.upload_from_string(   # здесь храним json данные
         data=json.dumps(json_data),
         content_type='application/json'
         )
  
-    
+   
 
     return jsonify({
   	"description": "info of users tokens", 
@@ -67,5 +70,3 @@ def resource_not_found(e):
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
-
-
