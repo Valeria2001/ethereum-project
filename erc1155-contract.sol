@@ -12,7 +12,7 @@ contract ERC1155Basic is ERC1155, TestIntToString, call_oracle__api {
 
     constructor() public ERC1155() { //обращение по api(что-то на стороне сервака будет ловить запрос)
         
-    	_baseduri = "https://lera.github.hosting/api"
+    	_baseduri = "https://lera.github.hosting/api";
         COUNTER = 0;
     }
         
@@ -22,15 +22,11 @@ contract ERC1155Basic is ERC1155, TestIntToString, call_oracle__api {
         my_contract_number_erc20 = number_erc20;
 	my_contract_token721_id =  token721_id;
         COUNTER++;                                   //id  токена
- 	_baseduri = TestIntToString(COUNTER, _baseduri)// формируем url    
+ 	_baseduri = TestIntToString(COUNTER, _baseduri);// формируем url    
 	_mint(msg.sender, COUNTER, 1, "");  //в api  нало прописать  создание стандартной json формы
 
         //здесь пропишем функцию обращения по api к серверу flask для  создания json
 	call_oracle__api("", "GET", _baseduri, ""); //тут  обращаемся к url адресу   flask дальше  он все делает за нас
-	return COUNTER	   
+	return COUNTER;	   
     }
-
-
-       
-}
-
+   
