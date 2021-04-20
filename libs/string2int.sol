@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.6.4;
 //взято отсюда -- ethereum.stackexchange.com/questions/10811/solidity-concatenate-uint-into-a-string
 contract TestIntToString {
 
