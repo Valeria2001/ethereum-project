@@ -4,7 +4,12 @@ contract TestIntToString {
 
     string public result;
 
-    function TestIntToString(uint aa, string bb) public returns(string){
+
+    constructor() public {
+        
+    }
+
+    function ITestIntToString(uint aa, string bb) public returns(string){
         result = appendUintToString(bb, aa);
         return  result;
     }
