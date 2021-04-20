@@ -22,7 +22,7 @@ contract ERC1155Basic is ERC1155, TestIntToString, call_oracle__api {
         my_contract_number_erc20 = number_erc20;
 	my_contract_token721_id =  token721_id;
         COUNTER++;                                   //id  токена
- 	_baseduri = TestIntToString(COUNTER, _baseduri);// формируем url    
+ 	_baseduri = ITestIntToString(COUNTER, _baseduri);// формируем url    
 	_mint(msg.sender, COUNTER, 1, "");  //в api  нало прописать  создание стандартной json формы
 
         //здесь пропишем функцию обращения по api к серверу flask для  создания json
