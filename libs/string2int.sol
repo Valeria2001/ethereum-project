@@ -1,27 +1,25 @@
-pragma solidity ^0.6.4;
 //взято отсюда -- ethereum.stackexchange.com/questions/10811/solidity-concatenate-uint-into-a-string
+pragma solidity ^0.6.4;
 contract TestIntToString {
 
     string public result;
-
-
     constructor() public {
         
     }
 
-    function ITestIntToString(uint aa, string bb) public returns(string){
+    function ITestIntToString(uint aa, string memory bb) public returns(string memory){
         result = appendUintToString(bb, aa);
         return  result;
     }
 
-    function uintToString(uint v) constant returns (string str) {
+    function uintToString(uint v) public returns (string memory str) {
         uint maxlength = 100;
         bytes memory reversed = new bytes(maxlength);
         uint i = 0;
         while (v != 0) {
             uint remainder = v % 10;
             v = v / 10;
-            reversed[i++] = byte(48 + remainder);
+            reversed[i++] = byte(uint8(48 + remainder));
         }
         bytes memory s = new bytes(i);
         for (uint j = 0; j < i; j++) {
@@ -30,14 +28,14 @@ contract TestIntToString {
         str = string(s);
     }
 
-    function appendUintToString(string inStr, uint v) constant returns (string str) {
+    function appendUintToString(string memory inStr, uint v) public returns (string memory str) {
         uint maxlength = 100;
         bytes memory reversed = new bytes(maxlength);
         uint i = 0;
         while (v != 0) {
             uint remainder = v % 10;
             v = v / 10;
-            reversed[i++] = byte(48 + remainder);
+            reversed[i++] = byte(uint8(48 + remainder));
         }
         bytes memory inStrb = bytes(inStr);
         bytes memory s = new bytes(inStrb.length + i);
@@ -51,3 +49,4 @@ contract TestIntToString {
         str = string(s);
     }
 }
+
