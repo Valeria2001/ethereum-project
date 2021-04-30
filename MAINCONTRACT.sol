@@ -26,7 +26,7 @@ contract MAINCONTRACT5 is  ERC1155Basic {   //контракт который о
         token20.approve(adres_sender, allowance); //approve  allowance
         //uint256 allowance = token20.allowance(adres_sender, adres_contract);
         //require(allowance >= 1, "Check the token allowance");
-        token20.transfer(adres_contract,1);
+        //token20.transfer(adres_contract,1);
         token20.transferFrom(adres_sender, adres_contract, number_erc20); //функция приема erc20 
         token721.transferFrom(adres_sender, adres_contract, token721_id);//функция приема erc721
         token1155_id = create_erc1155_token(number_erc20, token721_id); //функция чеканки  erc1155
