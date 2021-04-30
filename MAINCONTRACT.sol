@@ -19,18 +19,18 @@ contract MAINCONTRACT5 is  ERC1155Basic {   //контракт который о
         token721 = token2;//  создаем erc21 токен из контракта  ERC721
     }
 
-    function put_aktiv(uint256 number_erc20, uint256 number_erc721, uint256 token721_id, address payable adres_sender, address payable adres_contract) public payable  {   //функция  передачи пользователем токенов в контракт и получения токена erc1155
+    function put_aktiv(uint256 allowance, uint256 number_erc20, uint256 number_erc721, uint256 token721_id, address payable adres_sender, address payable adres_contract) public payable  {   //функция  передачи пользователем токенов в контракт и получения токена erc1155
 	uint256 token1155_id;
         require(number_erc20 > 0, "You need to send some erc20");
     	require(number_erc721 == 1, "You need to send 1 erc721");
-        token20.approve(adres_sender, 1); //approve  allowance
-        uint256 allowance = token20.allowance(adres_sender, adres_contract);
+        token20.approve(adres_sender, allowance); //approve  allowance
+        //uint256 allowance = token20.allowance(adres_sender, adres_contract);
         //require(allowance >= 1, "Check the token allowance");
         token20.transfer(adres_contract,1);
-        token20.transferFrom(adres_sender, address(this), number_erc20); //функция приема erc20 
-        token721.transferFrom(adres_sender, address(this), token721_id);//функция приема erc721
+        token20.transferFrom(adres_sender, adres_contract, number_erc20); //функция приема erc20 
+        token721.transferFrom(adres_sender, adres_contract, token721_id);//функция приема erc721
         token1155_id = create_erc1155_token(number_erc20, token721_id); //функция чеканки  erc1155
-        token1155.safeTransferFrom(address(this), msg.sender, token1155_id, 1,"");  // Oтправляет ERC1155 заказчику
+        token1155.safeTransferFrom(adres_contract, adres_sender, token1155_id, 1,"");  // Oтправляет ERC1155 заказчику
         //emit Bought(amountTobuy);
     }
 
