@@ -1,43 +1,29 @@
-pragma solidity >=0.6.0 <=0.8.3;
+pragma solidity ^0.5.0;
 
-
-import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
-import "./erc1155-contract.sol";
+import "./myERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
 
 
-contract MAINCONTRACT5 is  ERC1155Holder {
+contract tokenFactory {
 
-    IERC20 public token20;  //обьявляем структуру токена erc20
-    IERC721 public token721; //обьявляем структуру токена erc721
-    ERC1155Basic public token1155;
+    address[] tokenAddress;
+    //IERC20 token20;  обьявляем структуру токена erc20
 
-    event DoneStuff(address from);
+   constructor(IERC20 token1)  public {
 
-    /**
-     * @dev Constructor sets token that can be received
-     */
-   constructor(IERC20 token1, IERC721 token2, IERC1155 token3)  public {
-        token20 = token1; // создаем erc20 токен из контракта  ERC20Basic
-        //token1155 = token3;// создаем erc1155 токен из контракта  ERC1155 -- надо поменять на другой контракт
-        token721 = token2;//  создаем erc21 токен из контракта  ERC721
-        token1155 = new ERC1155Basic();
+    IERC20 token20; 
+
+   }
+ 
+    function deploy721Contract(string calldata name,string calldata symbol,string calldata baseUrl) external returns (myERC721 cardAddress) { //сюда передаются параметры для токена из веба
+        
+        token20.transferFrom(msg.sender, address(this), 1);
+        token20.transferFrom(msg.sender, address(this), 1);// тут должны быть  id erc20  на основе чего генерится  все
+        myERC721 newCards = new myERC721(name, symbol, baseUrl);
+
+        tokenAddress.push(address(newCards));  //надо  дбавить  erc1155 factory
+        return newCards;
     }
-    /**
-     * @dev Do stuff, requires tokens
-     */
-    function doStuff(uint256 amount20, uint256 token721_id) external {
-        address from = msg.sender;
-        uint256 token1155_id;
 
-        token20.transferFrom(from, address(this), amount20);
-        token721.transferFrom(from, address(this), token721_id);
-        token1155_id = token1155.create_erc1155_token(amount20, token721_id); //функция чеканки  erc1155
-        require(token1155_id > 0, "ERC1155: not created");
-        token4.safeTransferFrom(address(this), from, token1155_id, 1,"");
-        emit DoneStuff(from);
-    }
 }
