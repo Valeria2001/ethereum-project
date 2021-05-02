@@ -4,7 +4,7 @@
 # how to install this project
 
     git clone https://github.com/Valeria2001/ethereum-project 
-    cd ethereum-project
+    cd ethereum-project/project1
     truffle init
     mv *.sol migrations 
     npm install @openzeppelin/contracts@2.5.0
