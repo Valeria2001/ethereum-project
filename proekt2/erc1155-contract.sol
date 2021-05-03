@@ -1,5 +1,5 @@
 pragma solidity >=0.6.0 <=0.8.3;
-import "./string2int.sol";
+//import "./string2int.sol";
 //import "https://github.com/Valeria2001/ethereum-project/blob/main/libs/oracle__api__calling.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
