@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 //contract ERC1155Basic is ERC1155, TestIntToString, call_oracle__api {
 
 
-contract ERC1155Basic is ERC1155, TestIntToString {  
+contract ERC1155Basic is ERC1155 {  
     uint256 public COUNTER; // все должно быть приватным
     uint256 public my_contract_number_erc20;
     uint256 public my_contract_token721_id;
@@ -22,8 +22,7 @@ contract ERC1155Basic is ERC1155, TestIntToString {
        address ad_con;
        my_contract_number_erc20 = number_erc20;
        my_contract_token721_id =  token721_id;
-       COUNTER++;                                   //id  токена
-       _baseduri = ITestIntToString(COUNTER, _baseduri);// формируем url    
+       COUNTER++;                                   //id  токена  
        _mint(msg.sender, 1, 1, "aaa");  //в api  нало прописать  создание стандартной json формы
 
        //здесь пропишем функцию обращения по api к серверу flask для  создания json
