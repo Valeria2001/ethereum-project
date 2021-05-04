@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>FlaskBlog</title>
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='script2.js') }}"></script>
+    
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/web3/dist/web3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='/node_modules/tarp/require/require.min.js') }}"></script>
+
 </head>
 <body>
    <h1>Welcome to erc1155 app</h1>
@@ -24,7 +27,10 @@
         }
         // Previous if/else statement removed for brevity
         web3.eth.defaultAccount = web3.eth.accounts[0];
-        var eth1155contract = web3.eth.contract([
+        var Contract = Tarp.require('web3-eth-contract');
+
+
+       var eth1155contract =  new web3.eth.Contract([
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -418,12 +424,11 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]);
-        var Eth1155contract = eth1155contract.at('PASTE CONTRACT ADDRESS HERE');
-        console.log(Eth1155contract);
+], '0x0846850cca7dc939e7e6c1486fd87fe9d9fad285');
+        
+        console.log(eth1155contract);
     </script>
 
 
 </body>
 </html>
-
