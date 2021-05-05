@@ -11,7 +11,7 @@
 </head>
 <body>
    <h1>Welcome to erc1155 app</h1>
-   <h1> <button onclick="send_erc_data()">#1 ERC 20 - 1.5</button></h1>
+   <h1> <button id="button_1">#1 ERC 20 - 1.5</button></h1>
    <h2> <button onclick="console.log('Привет')">#2 ERC 20 - 2</button></h2>
    <h3><button onclick="console.log('Привет')">#3 ERC 20 - 4.2</button></h3>
 
@@ -23,7 +23,7 @@
 
 
 
-window.addEventListener('load', async () => {
+document.getElementById("button_1").addEventListener('click', async () => {
 
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
