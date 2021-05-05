@@ -427,6 +427,65 @@
 ], '0x0846850cca7dc939e7e6c1486fd87fe9d9fad285');
         
         console.log(eth1155contract);
+	
+var tokenFactory =  new web3.eth.Contract([
+		{
+			"inputs": [
+				{
+					"internalType": "contract IERC20",
+					"name": "token1",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "symbol",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "baseUrl",
+					"type": "string"
+				}
+			],
+			"name": "deploy721Contract",
+			"outputs": [
+				{
+					"internalType": "contract myERC721",
+					"name": "cardAddress",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [],
+			"name": "transferErc20",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		}
+	], 'addres');// i dont add address here
+	function send_erc_data(){
+        	eth1155contract.methods.create_erc1155_token(1,1).call().then(console.log);
+        } 
+
     </script>
 
 
