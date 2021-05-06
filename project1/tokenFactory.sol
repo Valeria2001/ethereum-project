@@ -19,7 +19,7 @@ contract tokenFactory {
 
     function transferErc20() public payable { //переправляем токены 
 
-      token20.transferFrom(msg.sender, address(this), 1);
+      token20.transferFrom(msg.sender, address(this), 2);
 
     }
     function deploy721Contract(string calldata name,string calldata symbol,string calldata baseUrl) external returns (myERC721 cardAddress) { //сюда передаются параметры для токена из веба
