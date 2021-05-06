@@ -9,23 +9,20 @@ btn1.onclick = function (evt) {  //для 1 кнопки
   
   a=a+1;
   if (pressed_button!="button1" && pressed_button!="" && a==2) {
-     
-  pressed_button="button1";
+  koefficent = koefficent+1.5;
+  pressed_button="";
   // сюда  добавим обработчик
-  console.log('pidor')
+  console.log('pidor');
+  koefficent = 0;
   a=0;
   }
   
   else if (a<2) {
+    koefficent = koefficent+1.5;
     pressed_button="button1";
     console.log('press the second button');
   }
-  else if(a>2) {
-    a=0;
-    pressed_button="";
-    console.log('idi nachui stalker');
 
-  }
 
 };
 
@@ -34,22 +31,20 @@ btn2.onclick = function (evt) {  //для 1 кнопки
   a=a+1;
   if (pressed_button!="button2" && pressed_button!="" && a==2) {
   a=0;
-  pressed_button="button2";
+  koefficent = koefficent+2;
+  pressed_button="";
   // сюда  добавим обработчик
-  console.log('pidor')
+  console.log('pidor');
+  koefficent = 0;
   
   }
   
  else if (a<2) {
+    koefficent = koefficent+2;
     pressed_button="button2";
     console.log('press the second button');
   }
-  else if(a>2) {
-    a=0;
-    pressed_button="";
-    console.log('idi nachui stalker');
 
-  }
 
 };
 
@@ -57,19 +52,21 @@ btn2.onclick = function (evt) {  //для 1 кнопки
 
 
 btn3.onclick = function(evt) { //для 3 кнопки
-  a=a+1;
-  if (a<2) {
-
-    evt.preventDefault();
-
+ a=a+1;
+  if (pressed_button!="button3" && pressed_button!="" && a==2) {
+  a=0;
+  koefficent = koefficent+4.2;
+  pressed_button="";
+  // сюда  добавим обработчик
+  console.log('pidor');
+  koefficent = 0;
+  
+  }
+  
+ else if (a<2) {
+    koefficent = koefficent+4.2;
+    pressed_button="button3";
     console.log('press the second button');
   }
-  else if(a>2) {
-    a=0;
-    console.log('idi nachui stalker');
-    evt.preventDefault();
-  }
-  else {
-    console.log('aaa blat');
-  }
+ 
 };
