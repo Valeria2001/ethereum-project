@@ -12,7 +12,7 @@ btn1.onclick = function (evt) {  //для 1 кнопки
   koefficent = koefficent+1.5;
   pressed_button="";
   // сюда  добавим обработчик
-  console.log('pidor');
+  console.log(koefficent);
   koefficent = 0;
   a=0;
   }
@@ -34,7 +34,7 @@ btn2.onclick = function (evt) {  //для 1 кнопки
   koefficent = koefficent+2;
   pressed_button="";
   // сюда  добавим обработчик
-  console.log('pidor');
+  console.log(koefficent);
   koefficent = 0;
   
   }
@@ -58,7 +58,7 @@ btn3.onclick = function(evt) { //для 3 кнопки
   koefficent = koefficent+4.2;
   pressed_button="";
   // сюда  добавим обработчик
-  console.log('pidor');
+  console.log(koefficent);
   koefficent = 0;
   
   }
