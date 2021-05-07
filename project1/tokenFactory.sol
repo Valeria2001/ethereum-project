@@ -25,7 +25,7 @@ contract tokenFactory {
     function deploy721Contract(string calldata name,string calldata symbol,string calldata baseUrl) external returns (myERC721 cardAddress) { //сюда передаются параметры для токена из веба
        
         
-        require(token20.balanceOf(address(this))>= 2, "You need to send some erc20");//error но поебать
+        //require(token20.balanceOf(address(this))>= 2, "You need to send some erc20");error но поебать
         myERC721 newCards = new myERC721(name, symbol, baseUrl);
 
         tokenAddress.push(address(newCards));  //надо  дбавить  erc1155 factory
