@@ -1,3 +1,11 @@
+function ConvertStringToHex(str) {
+              var arr = [];
+              for (var i = 0; i < str.length; i++) {
+                     arr[i] = (str.charCodeAt(i).toString(16)).slice(-4);
+              }
+              return  "0x"+arr.join("");
+       }
+
 a=0;
 pressed_button="";
 koefficent=0;
