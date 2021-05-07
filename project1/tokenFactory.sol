@@ -17,7 +17,7 @@ contract tokenFactory {
 
    }
 
-    function transferErc20() public payable { //переправляем токены 
+    function transferErc20() public payable { //в результате работы этой функции у вызывающего оказывается erc721 на баласе
 
       token20.transferFrom(msg.sender, address(this), 2);
 
