@@ -23,8 +23,7 @@ contract ERC1155Basic is ERC1155 {
        my_contract_number_erc20 = number_erc20;
        my_contract_token721_id =  token721_id;
        COUNTER++;                                   //id  токена  
-       _mint(msg.sender, 1, 1, "aaa");  //в api  нало прописать  создание стандартной json формы
-
+       _mint(msg.sender, COUNTER, 1, "aaa");  
        //здесь пропишем функцию обращения по api к серверу flask для  создания json
        //request("aaa", "GET", _baseduri, "aaa"); //тут  обращаемся к url адресу   flask дальше  он все делает за нас
        return COUNTER;	   
