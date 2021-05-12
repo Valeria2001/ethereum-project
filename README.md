@@ -1,19 +1,6 @@
 # ethereum-project
-
-
-# how to install this project
-## part 1
-this project is for solidity ^0.5.0 compiler version, setup it in truffe config
-
-    git clone https://github.com/Valeria2001/ethereum-project 
-    cd ethereum-project/project1
-    truffle init
-    mv *.sol contracts/ 
-    npm install @openzeppelin/contracts@2.5.0
-    truffle compile
-    mv *.js migrations/
-    
-## part2
-# how to test this project    
-
+there are 2 folders with smart contracts - project1 and project2. There are in two separate folders because of different solidity compiler versions.
+Project1 - use solidity 0.5.0.
+Project2 - use solidity 0.6.0.
+Python-oracle folder contains the web part of project
 
