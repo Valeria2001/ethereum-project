@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./myERC721.sol";
+import "https://github.com/v0landem0rt/ethereum-project/blob/main/project1/myERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
