@@ -38,7 +38,7 @@ p2 = document.getElementById('text_change2');
 
 
 
-btn1.onclick = function (evt) {  //для 1 кнопки
+btn1.onclick = function (evt) { 
   if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
   a=a+1;
   if (pressed_button!="button1" && pressed_button!="" && a==2) {
@@ -50,7 +50,7 @@ btn1.onclick = function (evt) {  //для 1 кнопки
    document.getElementById("button_2").style.backgroundColor = "white";
    document.getElementById("button_3").style.backgroundColor = "white";
    this.style.backgroundColor = "white";
-  callContract(x);   // сюда  добавим обработчик надо дописать в функцию прием данных
+  callContract(x);   
 
   koefficent = 0;
   a=0;
@@ -65,7 +65,7 @@ btn1.onclick = function (evt) {  //для 1 кнопки
 
 };
 
-btn2.onclick = function (evt) {  //для 1 кнопки
+btn2.onclick = function (evt) {  
   if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
   a=a+1;
   if (pressed_button!="button2" && pressed_button!="" && a==2) {
@@ -79,8 +79,6 @@ btn2.onclick = function (evt) {  //для 1 кнопки
    document.getElementById("button_3").style.backgroundColor = "white";   
    this.style.backgroundColor = "white";
   callContract(x);
-
-  // сюда  добавим обработчик
   console.log(koefficent);
   koefficent = 0;
   
