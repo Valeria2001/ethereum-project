@@ -19,6 +19,6 @@ def hello_world():
 @app.route('/', methods=['GET', 'POST'])
 def form_example():
     if 'admin' not in session:
-        return redirect('http://127.0.0.1:5000/login',200)        
+        return redirect('http://127.0.0.1:5000/login')        
     else:
         return render_template('index.html')
