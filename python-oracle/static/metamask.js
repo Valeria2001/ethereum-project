@@ -468,10 +468,11 @@ var tokenFactory =  new web3.eth.Contract([
 .then((txHash) => p.innerHTML = 'transaction 1(send ether) ' + txHash)
 
 
+aa= x.toString();
+console.log(aa);
 
 
-
-	   tokenFactory.methods.deploy721Contract('a','a','a').send(option,function(error,result){
+	   tokenFactory.methods.deploy721Contract(aa,aa,aa).send(option,function(error,result){
                 if (! error)
                     p1.innerHTML = 'transaction2 (mint erc721 and send to user) ' + result;
                 else
