@@ -210,6 +210,11 @@ async function callContract(x) { //функция для вызова erc1155
 					"internalType": "bytes",
 					"name": "token_data",
 					"type": "bytes"
+				},
+				{
+					"internalType": "string",
+					"name": "inside_data",
+					"type": "string"
 				}
 			],
 			"name": "create_erc1155_token",
@@ -395,7 +400,7 @@ async function callContract(x) { //функция для вызова erc1155
 			"stateMutability": "view",
 			"type": "function"
 		}
-	], '0x2b7a6c8f1a77a602a6b356dc3fdfd11a1c56c1b6');
+	], '0x39e24256ad86ce068e4c047bbcbe5538a4dadb59');
 
 var tokenFactory =  new web3.eth.Contract([
 		{
@@ -453,7 +458,7 @@ var tokenFactory =  new web3.eth.Contract([
 	], '0x9406ed4b357b40cca2ea301bcd8a391d075be72c'); 
 aa= x.toString();
 console.log(aa);
-		
+
   ethereum
     .request({
       method: 'eth_sendTransaction',
@@ -471,8 +476,6 @@ console.log(aa);
 
 
 
-
-
 	   tokenFactory.methods.deploy721Contract(aa,aa,aa).send(option,function(error,result){
                 if (! error)
                     p1.innerHTML = 'transaction2 (mint erc721 and send to user) ' + result;
@@ -480,7 +483,7 @@ console.log(aa);
                     console.log(error);  
             });
 
-            eth1155contract.methods.create_erc1155_token(x).send(option,function(error,result){ //тут было начало
+            eth1155contract.methods.create_erc1155_token(x,aa).send(option,function(error,result){ //тут было начало
                 if (! error)
                     p2.innerHTML = 'transaction3 (mint erc1155) ' + result;
                 else
@@ -504,8 +507,3 @@ console.log(aa);
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 };
-
-
-
-
-
