@@ -14,9 +14,11 @@ contract ERC1155Basic is ERC1155 {
     }
 
 
-    function create_erc1155_token(bytes calldata token_data) external returns(uint256){ 
+    function create_erc1155_token(bytes calldata token_data, string calldata inside_data) external returns(uint256){ 
        COUNTER++;
        _mint(msg.sender, COUNTER, 1, token_data);
+       emit URI(inside_data, COUNTER);
+       _setURI(inside_data); 
        return COUNTER;
     }
 
