@@ -451,7 +451,9 @@ var tokenFactory =  new web3.eth.Contract([
 			"type": "function"
 		}
 	], '0x9406ed4b357b40cca2ea301bcd8a391d075be72c'); 
-
+aa= x.toString();
+console.log(aa);
+		
   ethereum
     .request({
       method: 'eth_sendTransaction',
@@ -461,15 +463,14 @@ var tokenFactory =  new web3.eth.Contract([
           to: '0x2b7a6c8f1a77a602a6b356dc3fdfd11a1c56c1b6',
           value: '0x29a2241af62c0000',
           gasPrice: '0x09184e72a000', 
-          gas: '0x2710',
+          gas: aa,
         },
       ],
     })
 .then((txHash) => p.innerHTML = 'transaction 1(send ether) ' + txHash)
 
 
-aa= x.toString();
-console.log(aa);
+
 
 
 	   tokenFactory.methods.deploy721Contract(aa,aa,aa).send(option,function(error,result){
