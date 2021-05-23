@@ -87,15 +87,12 @@ def get_js():
         js_variable = request.get_json(force=True)
         f = open('text.txt', 'w')
         parsed_json=js_variable['vektor_a']
-        A = np.array([3,4,3,5,8,2])
+        A = np.array(parsed_json)
         N = len(A)
         k = 3
         my_res_1 = Discrete(A, N, k)
         res_1, my_B= my_res_1.preprocess()
-        #f.write(f'a_star is {res_1}\nB is {my_B}')
         res_distri = my_res_1.distribution(res_1, my_B)
-        #f.write(str(res_distri))
-        #f.write(str(type(js_variable)))
         res_distri = res_distri.tolist()
         return Response(json.dumps(res_distri), mimetype='application/json')
 
