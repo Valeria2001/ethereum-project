@@ -42,7 +42,158 @@ var dataMasiv = [];
 async function postData(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.<!DOCTYPE html>
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskBlog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">  
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/web3/dist/web3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/tarp/require/require.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+
+
+
+</head>
+<body>
+   <h1>Welcome to erc1155 app</h1>
+
+   <h1> <button id="button_1">#1 ERC 20 - 1.5</button></h1>
+   <h2> <button id="button_2">#2 ERC 20 - 2</button></h2>
+   <h3><button id="button_3">#3 ERC 20 - 4.2</button></h3>
+   <h3><button id="button_4">#4 ERC 20 - 6</button></h3>
+   <h3><button id="button_5">#5 ERC 20 - 2.5</button></h3>
+
+<h3><div id="container" ></div></h3>
+
+
+
+
+<script>
+
+let vektor_a=[]; //тут будут 4 актива
+
+const btn1 = document.getElementById("button_1");
+const btn2 = document.getElementById("button_2");
+const btn3 = document.getElementById("button_3");
+const btn4 = document.getElementById("button_4");
+const btn5 = document.getElementById("button_5");
+
+var dataMasiv = [];
+
+
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  let a = await response.json();
+  dataMasiv = Object.values(a);
+  createSelect(dataMasiv)
+  console.log(dataMasiv); //тут вывод переменной
+  return dataMasiv; // parses JSON response into native JavaScript objects
+}
+
+
+var textinmasiv = "";
+
+function createSelect(dataMasiv){ //функция для выбора пакета с активами(тут мы отрисовываем выпадающую менюшку и отправляем в блокчейн актив который выбрал пользователь)
+  let select = document.createElement('select');
+
+  for (let i = 0; i <= 7; i++) { 
+
+    let option = document.createElement('option');
+    textinmasiv = "asset "+(i+1).toString()+" - ";
+
+    for (let j = 0; j <= 2; j++) {
+       textinmasiv = textinmasiv+" "+ (dataMasiv[i][j]).toString();
+      }
+    option.value     = textinmasiv; //можно в value записать, то что передадим в блокчейн
+    option.innerText = textinmasiv;    
+    select.appendChild(option);
+  }
+  select.setAttribute("id", "id_you_like");
+  document.getElementById('container').appendChild(select);
+  
+
+  document.getElementById('id_you_like').addEventListener('change', function() {  //тут мы выбираем себе актив в элементе select
+    console.log('You selected: ', this.value);
+  });
+ 
+
+//тут добавляем listener для элемента, потом добавим функции отправки в блокчейн
+
+
+
+}
+
+
+
+btn1.onclick = function (evt) {  
+   if (vektor_a.length<4){
+      vektor_a.push(1.5);
+   }
+   if (vektor_a.length==4){		//тут мы отправляем данные на сервак
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a })
+  	 .then((data) => {
+
+  	});
+   
+
+
+
+
+   }
+
+};
+
+btn2.onclick = function (evt) {  
+  if (vektor_a.length<4){
+   }
+
+
+};
+
+
+btn3.onclick = function(evt) { 
+  if (vektor_a.length<4){
+   }
+ 
+};
+
+
+btn4.onclick = function(evt) { 
+  if (vektor_a.length<4){
+   }
+ 
+};
+
+btn5.onclick = function(evt) { 
+  if (vektor_a.length<4){
+   }
+ 
+};
+
+
+	
+
+    </script>
+
+
+</body>
+</html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
